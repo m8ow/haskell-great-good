@@ -2,7 +2,7 @@
 僕は「すごいHaskelたのしく学ぼう！」を毎日1章ずつ勉強しています。  
 勉強する中で、自分のメモとしてもしくは誰かの助けになればと思い内容をGitHubに公開しています。  
 
-著書はこちら: 
+書籍はこちら: 
 [すごいHaskelたのしく学ぼう！](https://shop.ohmsha.co.jp/shopdetail/000000001926/)
 
 ## 開発環境
@@ -38,5 +38,5 @@ GHCiコンソール（REPL）の起動
 GHCiの中断  
 `prelude> :q` 
   
-Haskellのコードをコンパイルなしで実行  
+Haskellのコードを直接実行  
 `$ stack runghc -- -isrc <haskellファイル>.hs`  
