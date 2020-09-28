@@ -51,11 +51,42 @@ showfunc :: (Show a) => a -> [Char]
 showfunc x = show x
 
 --8. Read 型クラス
+----型推論そのものを行える
+----String と [Char] は同じように使える
+----数値演算が行われたので、Intだと推論できる
+readfunc :: String -> Int
+readfunc x = read x + 1
+----「型注釈」で型（Int）を明示する
+readfunc' :: String -> Int
+readfunc' x = read x :: Int
+
 --9. Enum 型クラス
+----順番に並んだ型
+enumfunc :: (Enum a) => a -> a -> [a]
+enumfunc x y = [x..y]
+
 --10. Bounded 型クラス
+boundedfunc _ = minBound :: Int
+boundedfunc' _ = maxBound :: Char
+boundedfunc'' _ = minBound :: (Int, Char, Bool)
+
 --11. Num 型クラス
+----あらゆる数は「多相定数」として表現される
+----Int, Integer, Float, Doubleなどがそれに属する
+numfunc :: Int -> Int
+numfunc x = x :: Int
+numfunc' :: Float -> Float
+numfunc' x = x :: Float
+
 --12. Floating 型クラス
+----Floatingは浮動小数点（Float, Double）が含まれる
+
+
 --13. Integral 型クラス
+----Numは実数を含む全ての数を含む
+----Integralは整数全体（Int, Integer）のみを含む
+----fromIntegral :: (Num b, Integral a) => a -> b
+----fromIntegralは数を抽象化してくれる（Integer -> Float（Num）に対応など）
 
 main = do
   --1
@@ -86,22 +117,24 @@ main = do
   print $ showfunc True
 
   --8
-  --print $
+  print $ readfunc "32"
+  print $ readfunc' "32"
 
   --9
-  --print $
+  print $ enumfunc 'a' 'e'
+  print $ enumfunc 1 3
+  print $ enumfunc LT GT
 
   --10
-  --print $
+  print $ boundedfunc 0
+  print $ boundedfunc' 0
+  print $ boundedfunc'' 0
 
   --11
-  --print $
-
-  --11
-  --print $
+  print $ numfunc 20
+  print $ numfunc' 20
 
   --12
-  --print $
 
   --13
-  --print $
+  print $ fromIntegral 3 + 3.2

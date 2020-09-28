@@ -38,5 +38,5 @@ GHCiコンソール（REPL）の起動
 GHCiの中断  
 `prelude> :q` 
   
-Haskellのコードをコンパイルなしで実行  
+Haskellのコードを直接実行  
 `$ stack runghc -- -isrc <haskellファイル>.hs`  
