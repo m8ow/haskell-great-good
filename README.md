@@ -11,26 +11,28 @@ stack: version 2.3.3 x86_64
 GHCi: version 8.8.4
 
 ## stack導入
-`$ curl -sSL https://get.haskellstack.org/ | sh`
+`$ brew install haskell-stack`
 
-## stackコマンド（プロジェクトの作成） 
+## stackコマンド（プロジェクト一連の作業） 
 1. プロジェクトの作成  
 `$ stack new my-project`
 
-2. プロジェクトの作成  
+2. プロジェクトに移動  
 `$ cd my-project`
 
-2. プロジェクトの作成  
+3. コンパイラ（GHC）のインストール  
 `$ stack setup`
 
-2. プロジェクトの作成  
+4. プロジェクトをビルド（コンパイルしているわけではないです）  
 `$ stack build`
 
-2. プロジェクトの作成  
+5. ビルドファイルを実行  
 `$ stack exec my-project-exe`
 
 ## stackコマンド（便利）
-GHCiの起動  
+GHCiコンソール（REPL）の起動
+> ファイルを作らずともコンソール上でHaskellを実行できます。
+  
 `$ stack ghci`  
 
 GHCiの中断  
