@@ -81,13 +81,30 @@ calcBmis :: [(Double, Double)] -> [Double]
 calcBmis xs = [bmi w h | (w, h) <- xs]
   where bmi weight height = weight / height ^ 2
 
---10.
+--10. let It Be
+----let {bindings} in {expression}
+----letは式, whereは節. letは式の途中に入れることもできる
+cylinder :: Double -> Double -> Double
+cylinder r h =
+  let sideArea = 2 * pi * r * h
+      topArea = pi * r ^ 2
+  in sideArea + 2 + topArea
 
---11.
+--11. リスト内包表記での let
+----`(w, h) <- xs`は「ジェネレータ」と呼ばれ、let式より先に呼び出される
+----bmiにはlet式以降からアクセスできる
+calcBmis' :: [(Double, Double)] -> [Double]
+calcBmis' xs = [bmi | (w, h) <- xs, let bmi = w / h ^ 2, bmi > 25.0]
 
---12.
-
---13.
+--12. case 式
+----コードの中のどこでもパターンマッチが使える構文
+----基底値を利用するパターンマッチは、case式の糖衣構文
+----case {expression} of {pattern1} -> {result1}
+----                     {pattern2} -> {result2}
+----                     ...
+head'' :: [a] -> a
+head'' xs = case xs of [] -> error "error"
+                       (x:_) -> x
 
 main = do
   --1
@@ -106,7 +123,7 @@ main = do
   print $ listfunc [(1,3), (4,3), (7,9)]
   print $ listfunc' [(1,3), (4,3), (7,9)]
   ----エラー出る
-  --print $ head' []
+  --head' []
   print $ head' [1,2,3]
   print $ tell [1]
   print $ tell [1,2]
@@ -128,12 +145,15 @@ main = do
   print $ initials "Michael" "Jackson"
 
   --9
-  print $ calcBmis [(54.8, 1.70),(70, 1.75)]
+  print $ calcBmis [(54.8, 1.70), (70, 1.75)]
 
   --10
+  print $ cylinder 3.0 10.0
 
   --11
+  print $ calcBmis' [(54.8, 1.70), (70, 1.75)]
 
   --12
-
-  --13
+  ----エラー出る
+  --head'' []
+  print $ head'' [1,2,3]
