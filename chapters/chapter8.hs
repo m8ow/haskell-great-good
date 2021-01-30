@@ -1,0 +1,1 @@
+main = pureStrLn "hello, world"
