@@ -1,2 +1,12 @@
+# 拡張子無し
+*
+!*/
+!*.*
+
+# compiled files
+*.hi
+*.o
+
+# 環境依存
 .idea
 .DS_Store
